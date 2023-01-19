@@ -1,6 +1,25 @@
 from django.shortcuts import render
 
+from .models import Post
+
 # Create your views here.
 
 def index(request):
-    return render(request, "blog_app/index.html")
+    recent_posts = Post.objects.all().order_by("-date")[:3]
+    # print(recent_posts)
+
+    for post in recent_posts:
+        print(post.title)
+        print(post.author)
+
+    content = {"recent_posts": recent_posts}
+
+    return render(request, "blog_app/index.html", content)
+
+
+def all_posts(request):
+    return render(request, "blog_app/all_posts.html")
+
+
+def post_detail(request, slug):
+    return render(request, "blog_app/post-detail.html")

@@ -12,5 +12,32 @@
 
 
 {% block context %}
-    hello, world
+    <div class="container mt-5 text-center">
+        <h1>A Blog Dedicated to Lemon Py</h1>
+    <div>
+
+    <div class="container bg-white">
+        <div class="row mt-5 mb-5 div-all-articles">
+            <h2 class="mt-5 mb-5">Recent Recipes</h2>
+            {% for post in recent_posts %}
+                <div class="col-lg-4">
+                    <a class="class-a-post"href="" >
+                        <div class="container full-post-div">
+                            <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="Classic Lemon Py" />
+                            <div class="post__content> text-center">
+                                <h5>{{post.title}}</h5>
+                                <p class="p-author">by {{post.author}}</p>
+                                <p>
+                                    {{post.rating}} / 5.0
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+
 {% endblock %}

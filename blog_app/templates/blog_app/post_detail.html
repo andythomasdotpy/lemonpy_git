@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Lemonpy | Post Detail
+{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "blog_app/post_detail.css" %}">
+{% endblock %}
+
+
+{% block context %}
+    <div class="container text-center mt-5">
+        <h1>Post Title</h1>
+    </div>
+{% endblock %}
