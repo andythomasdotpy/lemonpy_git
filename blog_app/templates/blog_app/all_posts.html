@@ -18,11 +18,11 @@
                 <h1>All Posts</h1>
             </div>
             {% for post in recent_posts %}
-                <div class="col-lg-4 div-each-article mb-3">
+                <div class="col-lg-4 div-each-article mb-5">
                     <div class="inner-div-post text-center mx-auto">
-                        <a class= "a-class-post" href="" >
+                        <a class= "a-class-post" href="{% url "single-post" post.slug %}" >
                             <p class="post-title pt-3">{{post.title}}</p>
-                            <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="Classic Lemon Py" />
+                            <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="{{post.title}}" />
                             <div class="post__content> text-center">
                                 <p class="p-rating">
                                     {{ post.rating }}

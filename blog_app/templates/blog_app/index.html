@@ -16,12 +16,12 @@
         <h1>A Blog Dedicated to Lemon Py</h1>
     <div>
 
-    <div class="container bg-white full-outer-div">
+    <div class="container full-outer-div">
         <div class="row mt-5 mb-5 div-all-articles">
             <h2 class="mt-5 mb-5">Recent Recipes</h2>
             {% for post in recent_posts %}
                 <div class="col-lg-4 pt-3">
-                    <a class="class-a-post"href="" >
+                    <a class="class-a-post"href="{% url "single-post" post.slug %}" >
                         <div class="container full-post-div">
                             <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="Classic Lemon Py" />
                             <div class="post-content> text-center">

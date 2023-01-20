@@ -6,12 +6,6 @@ from .models import Post
 
 def index(request):
     recent_posts = Post.objects.all().order_by("-date")[:3]
-    # print(recent_posts)
-
-    for post in recent_posts:
-        print(post.title)
-        print(post.author)
-
     content = {"recent_posts": recent_posts}
 
     return render(request, "blog_app/index.html", content)
@@ -19,16 +13,13 @@ def index(request):
 
 def all_posts(request):
     recent_posts = Post.objects.all().order_by("-date")
-    # print(recent_posts)
-
-    for post in recent_posts:
-        print(post.title)
-        print(post.author)
-
     content = {"recent_posts": recent_posts}
 
     return render(request, "blog_app/all_posts.html", content)
 
 
 def post_detail(request, slug):
-    return render(request, "blog_app/post-detail.html")
+    selected_post = Post.objects.get(slug=slug)
+    content = {"post": selected_post}
+
+    return render(request, "blog_app/single_post.html", content)

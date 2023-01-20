@@ -1,3 +1,7 @@
+body {
+    background-color: #FFFFD2;
+}
+
 h1 {
     font-family: "Roboto Slab";
     font-weight: 600;
@@ -25,7 +29,7 @@ p {
 .post-image {
     width: 200px;
     height: 200px;
-    border-radius: 4px;
+    /* border-radius: 4px; */
 }
 
 .ul-class {
@@ -35,12 +39,8 @@ p {
 
 .div-all-articles {
     /* border: 2px solid black; */
-    box-shadow: 2px 2px 6px 6px rgba(0, 0, 255, .2);
-    border-radius: .5rem;
-}
-
-body {
-    background-color: #FFFFD2;
+    box-shadow: 2px 2px 4px 6px rgba(180, 180, 177, 0.2);
+    /* border-radius: .5rem; */
 }
 
 .p-author {
@@ -58,8 +58,8 @@ body {
 }
 
 .full-post-div:hover {
-    background-color: #f8f9fa;
-    border-radius: 10px;
+    background-color: #FFFFD2;
+    /* border-radius: 10px; */
     width: 240px;
     border: 1px solid lightgray;
     box-shadow: 2px 2px 6px 6px rgba(187, 187, 194, 0.2);
@@ -108,7 +108,7 @@ body {
     .post-image {
         width: 150px;
         height: 150px;
-        border-radius: 3px;
+        /* border-radius: 3px; */
     }
 }
 
@@ -122,6 +122,6 @@ body {
     .post-image {
         width: 150px;
         height: 150px;
-        border-radius: 3px;
+        /* border-radius: 3px; */
     }
 }
