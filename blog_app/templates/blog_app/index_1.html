@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+        }
+
+        .gfg {
+            margin: 3%;
+            position: relative;
+        }
+  
+        .first-txt {
+            position: absolute;
+            top: 17px;
+            left: 50px;
+        }
+  
+        .second-txt {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+        }
+
+        {% comment %} .div-text {
+            background-color: white;
+            position: absolute;
+        } {% endcomment %}
+
+    </style>
+</head>
+  
+<body>
+    <div class="gfg">
+        <img src="{% static "blog_app/images/classic-lemon-py.png" %}">
+
+        <div class="first-text">
+            <h3 class="">
+                GeeksforGeeks
+            </h3>
+        </div>
+          
+        <h3 class="second-txt">
+            A computer science portal
+        </h3>
+    </div>
+</body>
+  
+</html>
