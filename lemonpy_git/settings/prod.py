@@ -9,8 +9,8 @@ SECRET_KEY = config("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    # "lemonpy.com",
-    # "www.lemonpy.com"
+    "lemonpy.com",
+    "www.lemonpy.com"
     ]
 
 # HTTPS settings
