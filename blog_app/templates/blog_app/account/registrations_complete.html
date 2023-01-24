@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Lemonpy | Welcome
+{% endblock %}
+
+{% block css_styles %}
+    {% comment %} <link rel="stylesheet" href="{% static "blog_app/single_post.css" %}"> {% endcomment %}
+{% endblock %}
+
+
+{% block context %}
+    <div class="container text-center mt-5">
+        <h1>Welcome!</h1>
+        <p>Acount creation complete</p>
+        <a href="{% url "login" %}">Login</a>
+        <a href="{% url "login" %}">Login</a>
+
+    </div>
+{% endblock %}

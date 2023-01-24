@@ -40,11 +40,11 @@ def register(request):
             new_user.save()
             content = {"user_form": user_form}
 
-            return render(request, "blog_app/registrations_complete.html", content)
+            return render(request, "blog_app/account/registrations_complete.html", content)
 
     else:
         user_form = NewUserRegistrationForm()
         content = {"user_form":user_form}
 
-    return render(request, "blog_app/register.html", content)
+    return render(request, "blog_app/account/register.html", content)
 
