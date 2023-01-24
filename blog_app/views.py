@@ -16,7 +16,7 @@ def all_posts(request):
     recent_posts = Post.objects.all().order_by("-date")
     content = {"recent_posts": recent_posts}
 
-    return render(request, "blog_app/all_posts.html", content)
+    return render(request, "blog_app/all_posts_new.html", content)
 
 
 def post_detail(request, slug):
