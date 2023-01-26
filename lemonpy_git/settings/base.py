@@ -52,23 +52,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "lemonpy_git.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": config("NAME"), 
-#         "USER": config("USER_A"),
-#         "PASSWORD": config("PASSWORD"),
-#         "HOST": config("HOST"), 
-#         "PORT": config("PORT"),
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3",
 #     }
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": config("NAME"), 
+        "USER": config("USER_A"),
+        "PASSWORD": config("PASSWORD"),
+        "HOST": config("HOST"), 
+        "PORT": config("PORT"),
+    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

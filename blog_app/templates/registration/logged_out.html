@@ -11,8 +11,10 @@
 {% endblock %}
 
 
-{% block context %}
+{% block content %}
     <div class="container text-center mt-5">
-        <p>You've succesfully logged out. You can <a href="{% url "login"%}">login here</a></p>
+        <p>You've succesfully logged out, thanks for visting lemonpy.com.</p>
+        <br>
+        <h5><a href="{% url "login"%}">login</a></h5>
     </div>
 {% endblock %}
