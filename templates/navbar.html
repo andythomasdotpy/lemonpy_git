@@ -15,6 +15,9 @@
         font-family: Raleway;
         font-weight: 600;
     }
+    #dropdown-style {
+        background-color: #FFFFD2;
+    }
 </style>
 
 <nav class="navbar navbar-expand-lg">
@@ -30,27 +33,36 @@
             <li class="nav-item">
               <a class="nav-link active nav-bar-txt" aria-current="page" href="{% url "all-posts" %}">All Posts</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-bar-txt" href="" >About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active nav-bar-txt" href="">Contact</a>
-            </li>
             
             
-            <li class="nav-item">
-                <a class="nav-link active nav-bar-txt" href="{% url "register" %}">Register</a>
-            </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link active nav-bar-txt" href="{% url "login" %}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active nav-bar-txt" href="{% url "logout" %}">Logout</a>
-                {% comment %} <a class="nav-link active nav-bar-txt" href="{% url "logout" %}?next=/">logout</a> {% endcomment %}
+            {% if request.user.is_authenticated %}
+            
+                <li class="nav-item">
+                    <a class="nav-link active nav-bar-txt disabled" href="">Hi, {{ request.user.username }}</a>
+                </li>
 
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Profile
+                    </a>
+                    <ul class="dropdown-menu" id="dropdown-style">
+                      <li><a class="dropdown-item" href="{% url "logout" %}">Logout</a></li>
+                      <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    </ul>
+                  </li>
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active nav-bar-txt" href="{% url "register" %}">Register</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active nav-bar-txt" href="{% url "login" %}">Login</a>
+                </li>
+            {% endif %}
 
 
 
