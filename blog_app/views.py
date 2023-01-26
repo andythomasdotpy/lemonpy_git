@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import NewUserRegistrationForm
+from .forms import UserRegistrationForm
 
 from .models import Post
 
@@ -28,7 +28,7 @@ def post_detail(request, slug):
 
 def register(request):
     if request.method == "POST":
-        user_form = NewUserRegistrationForm(request.POST)
+        user_form = UserRegistrationForm(request.POST)
 
         if user_form.is_valid():
 
@@ -40,11 +40,11 @@ def register(request):
             new_user.save()
             content = {"user_form": user_form}
 
-            return render(request, "blog_app/account/registrations_complete.html", content)
+            return render(request, "account/register_done.html", content)
 
     else:
-        user_form = NewUserRegistrationForm()
+        user_form = UserRegistrationForm()
         content = {"user_form":user_form}
 
-    return render(request, "blog_app/account/register.html", content)
+    return render(request, "account/register.html", content)
 

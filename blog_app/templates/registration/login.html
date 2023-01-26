@@ -8,20 +8,20 @@ Lemonpy | Login
 {% endblock %}
 
 {% block css_styles %}
-{% comment %} <link rel="stylesheet" href="{% static "blog_app/single_post.css" %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static "blog_app/login.css" %}">
 {% endblock %}
 
 
 {% block context %}
-<div class="container mt-5">
+<div class="container mt-5 login">
     <h1>Login</h1>
 
-    <form action="" methods="POST" novalidate>
+    <form action="" method="POST" novalidate>
         {{ form | crispy }}
         {% csrf_token %}
         
-        <input type="hidden" name="next" value={{next}} />
-        <input type="submit" value="Login" class="btn btn-success" />
+        <input id="form-sytle" type="hidden" name="next" value="{{next}}" />
+        <input type="submit" value="Login" class="btn btn-dark" />
     
     </form>
 </div>
