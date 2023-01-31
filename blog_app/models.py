@@ -26,6 +26,18 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.title}"
 
+    # def set_author(self):
+    #     cd = self.cleaned_data
+    #     self.author = cd["user"]
+    #     self.author.save()
+    #     print(self.author)
+    #     return self.author
+
+    # def save(self):
+    #     user = super().save()
+    #     user.author(self.cleaned_data['user'])
+    #     return user.save()
+
 # class Likes(models.Model):
 #     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 #     post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)

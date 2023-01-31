@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views.generic.edit import CreateView
@@ -51,32 +52,19 @@ def register(request):
 
     return render(request, "account/register.html", {"user_form": user_form})
 
-
-# @login_required
-# def post_form(request):
-#     post_form = MakePostForm(request.POST) 
-
-#     if request.method == "POST":
-#         if post_form.is_valid():
-#             post = post_form.save(commit=False)
-#             post.author = request.user
-#             post = post_form.save()
-#             return redirect("all-posts")
-
-        
-#     else: 
-#         post_form = MakePostForm()
-    
-#     return render(request, "account/new_post.html", {"post_form": post_form})
-
-
-class CreatePostView(CreateView):
+# LoginRequiredMixin will require login to access view
+class CreatePostView(LoginRequiredMixin, CreateView):
     template_name = "account/new_post.html"
     model = Post
-    fields = ["title", "rating", "image", "content", "author"]
+    fields = ["title", "rating", "image", "content"]
     success_url = "/all-posts"
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
+
+@login_required
 def update_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     print(request.POST)
@@ -89,9 +77,11 @@ def update_post(request, slug):
 
     print(post)
     context = {"update_form": update_form}
+    
     return render(request, "account/update.html", context)
 
 
+@login_required
 def delete_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     post.delete()

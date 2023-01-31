@@ -13,12 +13,20 @@
 
 {% block content %}
     <div class="container text-center mt-5">
-        <h1>{{post.title}}</h1>
+        <h2 class="container h2-div">{{post.title}}</h2>
+        <h6 class="container h6-div">{{post.author}} • {{post.date}}</h6>
+
         <img class="post-image" src="{{ post.image.url }}" alt="{{post.title}}" />
         <br>
         {% if request.user == post.author %}
-            <a class="btn btn-success" href="{% url "update-post" post.slug %}">Update</a>
-            <a class="btn btn-danger" href="{% url "delete-post" post.slug %}">Delete</a>
+            <div class="container update-delete-div">
+                <br>
+                <a class="btn btn-dark" href="{% url "update-post" post.slug %}">Update</a>
+                <br>
+                <br>
+                <a class="btn btn-danger" href="{% url "delete-post" post.slug %}">Delete</a>
+                <br>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

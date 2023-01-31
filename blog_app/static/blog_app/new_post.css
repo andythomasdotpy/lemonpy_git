@@ -2,8 +2,12 @@ body {
     background-color: #FFFFD2;
 }
 
+.new-post {
+    max-width: 600px;
+}
+
 .update {
-    width: 700px;
+    max-width: 600px;
 }
 
 #id_title {
@@ -14,11 +18,15 @@ body {
     background-color: #f6f6df;
 }
 
-#id_image_name {
+#id_image {
     background-color: #f6f6df;
 }
 
 #id_content {
+    background-color: #f6f6df;
+}
+
+#id_author {
     background-color: #f6f6df;
 }
 
