@@ -52,6 +52,7 @@ def register(request):
 
     return render(request, "account/register.html", {"user_form": user_form})
 
+
 # LoginRequiredMixin will require login to access view
 class CreatePostView(LoginRequiredMixin, CreateView):
     template_name = "account/new_post.html"

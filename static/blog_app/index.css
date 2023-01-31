@@ -59,7 +59,7 @@ p {
 
 .full-post-div:hover {
     background-color: #FFFFD2;
-    /* border-radius: 10px; */
+    border-radius: 10px;
     width: 240px;
     border: 1px solid lightgray;
     box-shadow: 2px 2px 6px 6px rgba(187, 187, 194, 0.2);

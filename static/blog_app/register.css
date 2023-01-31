@@ -1,0 +1,32 @@
+body {
+    background-color: #FFFFD2;
+}
+
+.register {
+    width: 350px;
+}
+
+.form-sytle {
+    background-color: black;
+}
+
+#id_username {
+    background-color: #f6f6df;
+}
+
+#id_email {
+    background-color: #f6f6df;
+}
+
+#id_password_1 {
+    background-color: #f6f6df;
+}
+
+#id_password_2 {
+    background-color: #f6f6df;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0.25rem black;
+}
