@@ -3,35 +3,36 @@
 
 
 {% block title %}
-    Lemonpy | All Posts
+    lemonpy
 {% endblock %}
 
 {% block css_styles %}
-    <link rel="stylesheet" href="{% static "blog_app/all_posts.css" %}">
+    <link rel="stylesheet" href="{% static "blog_app/index.css" %}">
 {% endblock %}
 
 
 {% block content %}
-    <div class="container main-div">
-        <div class="row row-div mt-5 mb-5">
-            <div class="contianer mt-5 mb-5 text-center">
-                <h1>All Posts</h1>
-            </div>
+    <div class="container mt-5 text-center">
+        <h1>A Blog Dedicated to Lemon Py</h1>
+    <div>
+
+    <div class="container full-outer-div">
+        <div class="row mt-5 mb-5 div-all-articles">
+            <h2 class="mt-5 mb-5">All Recipes</h2>
             {% for post in recent_posts %}
-                <div class="col-lg-4 div-each-article mb-5">
-                    <div class="inner-div-post text-center mx-auto">
-                        <a class= "a-class-post" href="{% url "single-post" post.slug %}" >
-                            <p class="post-title pt-3">{{post.title}}</p>
-                            <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="{{post.title}}" />
-                            <div class="post__content> text-center">
-                                <p class="p-rating">
-                                    {{ post.rating }}
-                                </p>
+                <div class="col-lg-4 pt-3">
+                    <a class="class-a-post"href="{% url "single-post" post.slug %}" >
+                        <div class="container full-post-div">
+                            <img class="post-image" src="{{ post.image.url}}" alt="Classic Lemon Py" />
+                            <div class="post-content> text-center">
+                                <h6 class="pt-2">{{post.title}}</h6>
+                                <p class="p-author">by {{post.author}}</p>
                             </div>
-                        </a>
-                    </div>    
+                        </div>
+                    </a>
                 </div>
             {% endfor %}
         </div>
     </div>
+
 {% endblock %}

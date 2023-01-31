@@ -43,6 +43,10 @@
                     <a class="nav-link active nav-bar-txt disabled" href="">Hi, {{ request.user.username }}</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link active nav-bar-txt" href="{% url "new_post" %}">Create Post</a>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Profile

@@ -17,8 +17,8 @@ Lemonpy | Login
     <h1 class="mb-3">Login</h1>
 
     <form action="" method="POST" novalidate>
-        {{ form | crispy }}
         {% csrf_token %}
+        {{ form | crispy }}
         
         <p><a href="{% url "register" %}" >Create Account</a></p>
         <input id="form-sytle" type="hidden" name="next" value="{{next}}" />

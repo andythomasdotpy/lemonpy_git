@@ -14,6 +14,11 @@
 {% block content %}
     <div class="container text-center mt-5">
         <h1>{{post.title}}</h1>
-        <img class="post-image" src="{% static "blog_app/images/"|add:post.image_name %}" alt="{{post.title}}" />
+        <img class="post-image" src="{{ post.image.url }}" alt="{{post.title}}" />
+        <br>
+        {% if request.user == post.author %}
+            <a class="btn btn-success" href="{% url "update-post" post.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url "delete-post" post.slug %}">Delete</a>
+        {% endif %}
     </div>
 {% endblock %}

@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 
+from .models import Post
+
 
 class UserRegistrationForm(forms.ModelForm):
     password_1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -16,3 +18,15 @@ class UserRegistrationForm(forms.ModelForm):
         if cd["password_1"] != cd["password"]:
             raise forms.ValidationError('Your passwords do not match.')
         return cd["password_2"]
+
+
+class MakePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ("title", "rating", "image", "content")
+
+
+class UpdatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ("title", "rating", "image", "content")

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+    Lemonpy | New Post
+{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "blog_app/new_post.css" %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container mt-5 new-post">
+        {% comment %} <h1>Register</h1> {% endcomment %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+
+            <input type="submit" value="New Post" class="btn btn-dark">  
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Update Article {% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "blog_app/new_post.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 update">
+        <h3>Update Form</h3>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{ update_form | crispy }}
+            <input type="submit" value="Update Article" class="btn btn-dark">
+        </form>
+    </div>
+{% endblock %}

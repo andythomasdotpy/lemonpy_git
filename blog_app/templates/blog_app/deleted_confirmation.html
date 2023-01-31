@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+    Lemonpy | Delete Confirmation
+{% endblock %}
+
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "blog_app/single_post.css" %}">
+{% endblock %}
+
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <p>You have successfully deleted your post. Return to <a href="{% url "all-posts" %}">All Posts</a></p>
+    </div>
+{% endblock %}

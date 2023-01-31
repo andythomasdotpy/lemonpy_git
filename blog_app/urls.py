@@ -13,5 +13,8 @@ urlpatterns = [
     path("login", LoginView.as_view(), name="login"),
     path('logout', LogoutView.as_view(), name='logout'),
     path("password-change/", PasswordChangeView.as_view(), name="password-change"),
-    path("password-change/done/", PasswordChangeDoneView.as_view(), name="password_change_done"),    
+    path("password-change/done/", PasswordChangeDoneView.as_view(), name="password_change_done"),
+    path("new-post", views.CreatePostView.as_view(), name="new_post"),
+    path("update-post/<slug:slug>", views.update_post, name="update-post"),
+    path("delete-post<slug:slug>", views.delete_post, name="delete-post"),
 ]
