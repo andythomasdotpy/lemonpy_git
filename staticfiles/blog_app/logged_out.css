@@ -1,3 +1,13 @@
 body {
     background-color: #FFFFD2;
 }
+
+.main-div {
+    margin-top: 20%;
+}
+
+@media (max-width: 525px) {
+    .main-div {
+        font-size: 12px;
+    }
+}
