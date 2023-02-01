@@ -14,8 +14,8 @@
 
 {% block content %}
     <div class="container mt-5 register">
-        <h1>Register</h1>
-        <form action="" method="POST" novalidate>
+        <h1 class="h1-register">Register</h1>
+        <form class="continer mt-4" action="" method="POST" novalidate>
             {{ user_form | crispy }}
             {% csrf_token %}
 

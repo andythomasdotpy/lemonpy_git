@@ -30,3 +30,8 @@ body {
     border-color: black;
     box-shadow: 0 0 0 0.25rem black;
 }
+
+.h1-register {
+    font-family: "Roboto Slab";
+    font-weight: 600;
+}

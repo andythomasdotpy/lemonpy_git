@@ -14,9 +14,9 @@ Lemonpy | Login
 
 {% block content %}
 <div class="container mt-4 login">
-    <h1 class="mb-3">Login</h1>
+    <h1 class="mb-3 h1-login">Login</h1>
 
-    <form action="" method="POST" novalidate>
+    <form class="mt-4" action="" method="POST" novalidate>
         {% csrf_token %}
         {{ form | crispy }}
         

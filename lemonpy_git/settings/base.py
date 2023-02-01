@@ -87,8 +87,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "static/"
-STATIC_ROOT = 'static'
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -100,5 +99,12 @@ LOGIN_REDIRECT_URL="index"
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
 MEDIA_ROOT = BASE_DIR / "uploads"
-MEDIA_URL = "/user-media/"   #any path of your choice
+MEDIA_URL = "/files/"   #any path of your choice
