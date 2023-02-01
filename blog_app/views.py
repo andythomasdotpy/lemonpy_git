@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, View
 
 from .forms import UserRegistrationForm, MakePostForm
-from .models import Post
+from .models import Post, Likes
 
 
 # Create your views here.
@@ -25,7 +25,24 @@ def all_posts(request):
 
 def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
-    content = {"post": selected_post}
+    print(f"post_id = {selected_post.id}")
+    print(f"author_id = {selected_post.author_id}")
+
+    if request.method == "POST":
+        print("POST HERE")
+        try:
+            is_liked = Likes.objects.get(user_id=selected_post.author_id)
+            print(is_liked)
+            is_liked.delete()
+            liked = False
+        except Likes.DoesNotExist:
+            like_row = Likes(user_id=int(selected_post.author_id), post_id=int(selected_post.id))
+            like_row.save()
+            liked = True
+
+    print(liked)
+
+    content = {"post": selected_post, "liked": liked}
 
     return render(request, "blog_app/single_post.html", content)
 
@@ -88,6 +105,20 @@ def delete_post(request, slug):
     post.delete()
 
     return render(request, "blog_app/deleted_confirmation.html")
+
+
+# class LikeView(View):
+#     def get(self, request):
+#         print("get")
+#         return redirect("index")
+    
+#     def post(self, request):
+#         print("post")
+#         all_likes = Likes.objects.all()
+#         print(all_likes)
+#         return render(request, "blog_app/single_post.html")
+
+    
 
 
 

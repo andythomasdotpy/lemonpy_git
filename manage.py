@@ -20,3 +20,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+#TODO: add like system
+#TODO: serve static uploaded images from s3 bucket

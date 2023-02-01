@@ -26,29 +26,9 @@ class Post(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-    # def set_author(self):
-    #     cd = self.cleaned_data
-    #     self.author = cd["user"]
-    #     self.author.save()
-    #     print(self.author)
-    #     return self.author
 
-    # def save(self):
-    #     user = super().save()
-    #     user.author(self.cleaned_data['user'])
-    #     return user.save()
+class Likes(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    date = models.DateField(auto_now=True)
 
-# class Likes(models.Model):
-#     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-#     post_id = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
-#     date = models.DateField(auto_now=True)
-
-
-# class Post(models.Model):
-#     title = models.CharField(max_length=150)
-#     rating = models.FloatField(max_length=20, null=True, validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
-#     image_name = models.TextField(max_length=300)
-#     date = models.DateTimeField(auto_now=True)
-#     slug = models.SlugField(unique=True)
-#     content = models.TextField(validators=[MinLengthValidator(10)])
-#     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name="posts")
