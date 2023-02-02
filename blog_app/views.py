@@ -22,6 +22,7 @@ def all_posts(request):
 
     return render(request, "blog_app/all_posts.html", content)
 
+
 @login_required
 def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
@@ -131,20 +132,3 @@ def delete_post(request, slug):
     post.delete()
 
     return render(request, "blog_app/deleted_confirmation.html")
-
-
-# class LikeView(View):
-#     def get(self, request):
-#         print("get")
-#         return redirect("index")
-    
-#     def post(self, request):
-#         print("post")
-#         all_likes = Likes.objects.all()
-#         print(all_likes)
-#         return render(request, "blog_app/single_post.html")
-
-    
-
-
-
