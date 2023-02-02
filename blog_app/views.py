@@ -23,43 +23,53 @@ def all_posts(request):
     return render(request, "blog_app/all_posts.html", content)
 
 
+@login_required
 def post_detail(request, slug):
-    liked = False
     selected_post = Post.objects.get(slug=slug)
     print(f"post_id = {selected_post.id}")
     print(f"author_id = {selected_post.author_id}")
+    loggedin_user = request.user.id
+    print(f"logged in user = {loggedin_user}")
+    print("here 1 - start")
 
     if request.method == "POST":
         print("POST HERE")
         try:
-            is_liked = Likes.objects.get(user_id=selected_post.author_id)
+            is_liked = Likes.objects.get(user_id=loggedin_user)
             print(is_liked)
             is_liked.delete()
             liked = False
             print(liked)
+            print("here 2")
+
         except Likes.DoesNotExist:
-            like_row = Likes(user_id=int(selected_post.author_id), post_id=int(selected_post.id))
+            like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
             like_row.save()
             liked = True
             print(liked)
+            print("here 3")
 
         return redirect("single-post", slug=selected_post.slug)
 
 
     try:
-        is_liked = Likes.objects.get(user_id=selected_post.author_id)
+        is_liked = Likes.objects.get(user_id=loggedin_user)
         print(is_liked)
         liked = True
         print(liked)
+        print("here 4")
+
     except Likes.DoesNotExist:
-        like_row = Likes(user_id=int(selected_post.author_id), post_id=int(selected_post.id))
+        like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
         liked = False
         print(liked)
+        print("here 5")
         
+    print("here 6 - end")
 
-    # total_likes = 0
-    content = {"post": selected_post, "liked": liked}
-    # content = {"post": selected_post, "liked": liked, "total_likes": total_likes}
+    total_likes = Likes.objects.filter(post_id=selected_post.id).count()
+    print(f"total_likes {total_likes} for post_id {selected_post.id}")
+    content = {"post": selected_post, "liked": liked, "total_likes": total_likes}
 
     return render(request, "blog_app/single_post.html", content)
 
@@ -122,20 +132,3 @@ def delete_post(request, slug):
     post.delete()
 
     return render(request, "blog_app/deleted_confirmation.html")
-
-
-# class LikeView(View):
-#     def get(self, request):
-#         print("get")
-#         return redirect("index")
-    
-#     def post(self, request):
-#         print("post")
-#         all_likes = Likes.objects.all()
-#         print(all_likes)
-#         return render(request, "blog_app/single_post.html")
-
-    
-
-
-

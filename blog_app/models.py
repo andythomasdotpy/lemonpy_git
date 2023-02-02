@@ -32,3 +32,6 @@ class Likes(models.Model):
     post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
     date = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return f"{self.user}"
+
