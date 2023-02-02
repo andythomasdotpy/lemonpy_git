@@ -13,16 +13,21 @@ Lemonpy | Login
 
 
 {% block content %}
-<div class="container mt-4 login">
+<div class="container login">
     <h1 class="mb-3 h1-login">Login</h1>
 
     <form class="mt-4" action="" method="POST" novalidate>
         {% csrf_token %}
         {{ form | crispy }}
         
-        <p><a href="{% url "register" %}" >Create Account</a></p>
         <input id="form-sytle" type="hidden" name="next" value="{{next}}" />
         <input type="submit" value="Login" class="btn btn-dark" />
+
+        <br>
+        <br>
+        <br>
+        <p><a href="{% url "register" %}" >Create New Account</a></p>
+
     
     </form>
 </div>

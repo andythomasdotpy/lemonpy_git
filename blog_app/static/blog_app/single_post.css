@@ -38,6 +38,10 @@ h1 {
     text-align: left;
 }
 
+.like-btn {
+    width: 50px;
+}
+
 
 @media (max-width: 525px) {
     .main-div {
