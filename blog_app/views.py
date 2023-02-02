@@ -24,6 +24,7 @@ def all_posts(request):
 
 
 def post_detail(request, slug):
+    liked = False
     selected_post = Post.objects.get(slug=slug)
     print(f"post_id = {selected_post.id}")
     print(f"author_id = {selected_post.author_id}")
@@ -35,14 +36,30 @@ def post_detail(request, slug):
             print(is_liked)
             is_liked.delete()
             liked = False
+            print(liked)
         except Likes.DoesNotExist:
             like_row = Likes(user_id=int(selected_post.author_id), post_id=int(selected_post.id))
             like_row.save()
             liked = True
+            print(liked)
 
-    print(liked)
+        return redirect("single-post", slug=selected_post.slug)
 
+
+    try:
+        is_liked = Likes.objects.get(user_id=selected_post.author_id)
+        print(is_liked)
+        liked = True
+        print(liked)
+    except Likes.DoesNotExist:
+        like_row = Likes(user_id=int(selected_post.author_id), post_id=int(selected_post.id))
+        liked = False
+        print(liked)
+        
+
+    # total_likes = 0
     content = {"post": selected_post, "liked": liked}
+    # content = {"post": selected_post, "liked": liked, "total_likes": total_likes}
 
     return render(request, "blog_app/single_post.html", content)
 
