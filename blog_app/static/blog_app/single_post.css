@@ -42,6 +42,10 @@ h1 {
     width: 50px;
 }
 
+.div-delete {
+    margin-top: 15%;
+}
+
 
 @media (max-width: 525px) {
     .main-div {
