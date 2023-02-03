@@ -8,11 +8,11 @@ SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-# ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
-ALLOWED_HOSTS = [
-    "lemonpy.com",
-    "www.lemonpy.com"
-]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+# ALLOWED_HOSTS = [
+#     "lemonpy.com",
+#     "www.lemonpy.com"
+# ]
 
 
 # HTTPS settings
