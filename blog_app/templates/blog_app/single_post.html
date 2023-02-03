@@ -17,7 +17,7 @@
         <h6 class="container h6-div">{{post.author}} • {{post.date}}</h6>
 
 
-        <img class="post-image mb-3" src="{{ post.image.url }}" alt="{{post.title}}" />
+        <img class="post-image mb-3" src="{{ post.image.url }}" alt="{{post.image}}" />
         <br>
 
             {% if request.user != post.author %}
