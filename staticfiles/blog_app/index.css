@@ -81,6 +81,11 @@ p {
     h6 {
         margin-bottom: 4px;
     }
+    .post-image {
+        width: 225px;
+        height: 225px;
+        /* border-radius: 3px; */
+    }
 }
 
 @media (max-width: 767px) {
@@ -93,6 +98,11 @@ p {
     p {
         font-size: 13px;
     }
+    .post-image {
+        width: 225px;
+        height: 225px;
+        /* border-radius: 3px; */
+    }
 }
 
 @media (max-width: 540px) {
@@ -103,11 +113,11 @@ p {
         font-size: 21px;
     }
     .full-outer-div {
-        max-width: 60%;
+        max-width: 70%;
     }
     .post-image {
-        width: 150px;
-        height: 150px;
+        width: 225px;
+        height: 225px;
         /* border-radius: 3px; */
     }
 }
@@ -120,8 +130,8 @@ p {
         max-width: 80%;
     }
     .post-image {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
         /* border-radius: 3px; */
     }
 }
