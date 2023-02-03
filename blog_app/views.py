@@ -90,6 +90,13 @@ def post_detail(request, slug):
 
     if request.method == "POST":
         print("POST HERE")
+        if does_user_like_count == 0:
+            like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
+            like_row.save()
+        else:
+            like_row = Likes.objects.get(user_id=loggedin_user, post_id=selected_post.id)
+            like_row.delete()
+
         return redirect("single-post", selected_post.slug)
 
 
