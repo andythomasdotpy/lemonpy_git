@@ -25,9 +25,9 @@
                     {% csrf_token %}
                     <div class="container like-div">
                         {% if not is_liked %}
-                            <button class="btn  like-btn" name="like" value="like "href="{% url "single-post" post.slug %}">♡</button>
+                            <button class="like-btn ps-0" name="like" value="like "href="{% url "single-post" post.slug %}">♡</button>
                         {% else %}
-                            <button class="btn  like-btn" name="like" value="unlike "href="{% url "single-post" post.slug %}">❤️</button>
+                            <button class="like-btn ps-0" name="like" value="unlike "href="{% url "single-post" post.slug %}">❤️</button>
                         {% endif %}
     
                         <button class="btn">Likes: {{ total_likes }}</button>    
@@ -37,9 +37,14 @@
                 <div class="container update-delete-div">
                     <a class="btn btn-dark" href="{% url "update-post" post.slug %}">Update</a>
                     <a class="btn btn-danger" href="{% url "delete-post" post.slug %}">Delete</a>
+                    <br>
+                    <br>
                     <button class="btn btn-outline-dark" disabled>Likes: {{ total_likes }}</button>    
                 </div>
             {% endif %}
+            <div class="container div-content ps-3">
+                <p class="text-content">{{ post.content }}</p>
+            </div>
 
 
 
