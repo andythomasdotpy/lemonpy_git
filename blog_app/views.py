@@ -23,6 +23,56 @@ def all_posts(request):
     return render(request, "blog_app/all_posts.html", content)
 
 
+# @login_required
+# def post_detail(request, slug):
+#     selected_post = Post.objects.get(slug=slug)
+#     print(f"post_id = {selected_post.id}")
+#     print(f"author_id = {selected_post.author_id}")
+#     loggedin_user = request.user.id
+#     print(f"logged in user = {loggedin_user}")
+#     print("here 1 - start")
+
+#     if request.method == "POST":
+#         print("POST HERE")
+#         try:
+#             is_liked = Likes.objects.get(user_id=loggedin_user)
+#             print(is_liked)
+#             is_liked.delete()
+#             liked = False
+#             print(liked)
+#             print("here 2")
+
+#         except Likes.DoesNotExist:
+#             like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
+#             like_row.save()
+#             liked = True
+#             print(liked)
+#             print("here 3")
+
+#         return redirect("single-post", slug=selected_post.slug)
+
+
+    # try:
+    #     is_liked = Likes.objects.filter(user_id=loggedin_user.id)
+    #     print(f"is_liked = {is_liked}")
+    #     liked = True
+    #     print(liked)
+    #     print("here 4")
+
+    # except Likes.DoesNotExist:
+    #     like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
+    #     liked = False
+    #     print(liked)
+    #     print("here 5")
+        
+    # print("here 6 - end")
+
+    # total_likes = Likes.objects.filter(post_id=selected_post.id).count()
+    # print(f"total_likes {total_likes} for post_id {selected_post.id}")
+    # content = {"post": selected_post, "liked": liked, "total_likes": total_likes}
+
+    # return render(request, "blog_app/single_post.html", content)
+
 @login_required
 def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
@@ -31,51 +81,27 @@ def post_detail(request, slug):
     loggedin_user = request.user.id
     print(f"logged in user = {loggedin_user}")
     print("here 1 - start")
-
-    # if request.method == "POST":
-    #     print("POST HERE")
-    #     is_liked = Likes.objects.filter(user_id=loggedin_user)
-    #     print(is_liked)
-    #     is_liked.delete()
-        # liked = False
-        # print(liked)
-        # print("here 2")
-
-        # except Likes.DoesNotExist:
-        #     like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
-        #     like_row.save()
-        #     liked = True
-        #     print(liked)
-        #     print("here 3")
-
-        # return redirect("single-post", slug=selected_post.slug)
-
-
-    # try:
-    is_liked = Likes.objects.filter(user_id=loggedin_user)
-    like_row = Likes(user_id=int(loggedin_user), post_id=int(selected_post.id))
-    print(is_liked)
-    print(like_row)
-    if len(is_liked) == 0:
-        is_liked.delete()
-        liked = True
-        print(liked)
-        print("here 4")
-
-    else:
-        like_row.save()
-        liked = False
-        print(liked)
-        print("here 5")
-
-        
-    print("here 6 - end")
-
     total_likes = Likes.objects.filter(post_id=selected_post.id).count()
-    print(f"total_likes {total_likes} for post_id {selected_post.id}")
-    content = {"post": selected_post, "total_likes": total_likes}
+    print(total_likes)
+    qs_does_user_like = Likes.objects.filter(user_id=loggedin_user, post_id=selected_post.id)
+    print(qs_does_user_like)
+    does_user_like_count = qs_does_user_like.count()
+    print(does_user_like_count)
 
-    return render(request, "blog_app/single_post.html", content)
+    if request.method == "POST":
+        print("POST HERE")
+        return redirect("single-post", selected_post.slug)
+
+
+    if does_user_like_count == 0:
+        is_liked = False
+    else:
+        is_liked = True
+    
+    selected_post = Post.objects.get(slug=slug)
+    context = {"post": selected_post, "total_likes": total_likes, "is_liked": is_liked}
+    return render(request, "blog_app/single_post.html", context)
+
 
 
 def register(request):

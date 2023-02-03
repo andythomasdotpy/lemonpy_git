@@ -33,5 +33,5 @@ class Likes(models.Model):
     date = models.DateField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user}"
+        return f"user_id: {self.user} post_id: {self.post}"
 

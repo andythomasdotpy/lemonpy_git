@@ -24,7 +24,7 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="container like-div">
-                        {% if not liked %}
+                        {% if not is_liked %}
                             <button class="btn  like-btn" name="like" value="like "href="{% url "single-post" post.slug %}">♡</button>
                         {% else %}
                             <button class="btn  like-btn" name="like" value="unlike "href="{% url "single-post" post.slug %}">❤️</button>
