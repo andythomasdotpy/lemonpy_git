@@ -34,7 +34,7 @@
                     </div>
                 </form>
             {% else %}
-                <div class="container update-delete-div">
+                <div class="container update-delete-div ps-3">
                     <a class="btn btn-dark" href="{% url "update-post" post.slug %}">Update</a>
                     <a class="btn btn-danger" href="{% url "delete-post" post.slug %}">Delete</a>
                     <button class="btn btn-outline-dark" disabled>Likes: {{ total_likes }}</button>    
@@ -42,6 +42,7 @@
                 <br>
             {% endif %}
             <div class="container div-content ps-3">
+                <h6 class="h6-sub-class">{{post.author}}</h6>
                 <p class="text-content">{{ post.content }}</p>
             </div>
 

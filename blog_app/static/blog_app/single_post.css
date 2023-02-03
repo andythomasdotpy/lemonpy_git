@@ -60,6 +60,11 @@ h1 {
 
 .text-content {
     font-size: 14px;
+    font-weight: 300;
+}
+
+.h6-sub-class, .text-content {
+    display: inline;
 }
 
 
