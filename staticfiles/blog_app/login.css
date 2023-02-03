@@ -4,6 +4,7 @@ body {
 
 .login {
     width: 350px;
+    margin-top: 10%;
 }
 
 .form-sytle {
@@ -21,4 +22,9 @@ body {
 .form-control:focus {
     border-color: black;
     box-shadow: 0 0 0 0.25rem black;
+}
+
+.h1-login {
+    font-family: "Roboto Slab";
+    font-weight: 600;
 }
