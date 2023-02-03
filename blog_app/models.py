@@ -14,7 +14,7 @@ class Author(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=25)
     rating = models.FloatField(max_length=20, null=True, validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
     # image_name = models.TextField(max_length=300)
     image = models.ImageField(upload_to="posts")
