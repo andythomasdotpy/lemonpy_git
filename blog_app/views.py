@@ -23,6 +23,7 @@ def all_posts(request):
     return render(request, "blog_app/all_posts.html", content)
 
 
+@login_required
 def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
     print(f"post_id = {selected_post.id}")
