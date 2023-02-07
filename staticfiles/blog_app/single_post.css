@@ -67,6 +67,15 @@ h1 {
     display: inline;
 }
 
+.logged-out-user-div {
+    max-width: 400px;
+    align-items: left;
+}
+
+.a-tag-logged-out {
+    text-decoration: none;
+}
+
 @media (max-width: 525px) {
     .main-div {
         width: 320px;

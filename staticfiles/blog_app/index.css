@@ -39,7 +39,7 @@ p {
 
 .div-all-articles {
     /* border: 2px solid black; */
-    box-shadow: 2px 2px 4px 6px rgba(180, 180, 177, 0.2);
+    /* box-shadow: 2px 2px 4px 6px rgba(180, 180, 177, 0.2); */
     border-radius: .5rem;
 }
 

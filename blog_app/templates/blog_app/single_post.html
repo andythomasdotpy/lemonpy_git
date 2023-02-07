@@ -20,6 +20,7 @@
         <img class="post-image mb-3" src="{{ post.image.url }}" alt="{{post.image}}" />
         <br>
 
+        {% if user.is_authenticated %}
             {% if request.user != post.author %}
                 <form method="post">
                     {% csrf_token %}
@@ -41,13 +42,24 @@
                 </div>
                 <br>
             {% endif %}
+
+        {% else %}
+        
+            <div class="container like-div">
+                <a class="a-tag-logged-out" href="{% url "login" %}">
+                    {% csrf_token %}
+                    <button class="like-btn ps-0">♡</button>
+                </a>
+                <button class="btn">Likes: {{ total_likes }}</button>  
+            </div>
+  
+        {% endif %}
+
             <div class="container div-content ps-3">
                 <h6 class="h6-sub-class">{{post.author}}</h6>
                 <p class="text-content">{{ post.content }}</p>
             </div>
+    
+        </div>
 
-
-
-
-    </div>
 {% endblock %}
