@@ -1,0 +1,30 @@
+body {
+    background-color: #FFFFD2;
+}
+
+.login {
+    width: 350px;
+    margin-top: 10%;
+}
+
+.form-sytle {
+    background-color: black;
+}
+
+#id_username {
+    background-color: #f6f6df;
+}
+
+#id_password {
+    background-color: #f6f6df;
+}
+
+.form-control:focus {
+    border-color: black;
+    box-shadow: 0 0 0 0.25rem black;
+}
+
+.h1-login {
+    font-family: "Roboto Slab";
+    font-weight: 600;
+}

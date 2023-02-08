@@ -25,17 +25,10 @@ def all_posts(request):
 
 def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
-    print(f"post_id = {selected_post.id}")
-    print(f"author_id = {selected_post.author_id}")
     loggedin_user = request.user.id
-    print(f"logged in user = {loggedin_user}")
-    print("here 1 - start")
     total_likes = Likes.objects.filter(post_id=selected_post.id).count()
-    print(total_likes)
     qs_does_user_like = Likes.objects.filter(user_id=loggedin_user, post_id=selected_post.id)
-    print(qs_does_user_like)
     does_user_like_count = qs_does_user_like.count()
-    print(does_user_like_count)
 
     if request.method == "POST":
         print("POST HERE")
@@ -98,7 +91,6 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 @login_required
 def update_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
-    print(request.POST)
     
     update_form = MakePostForm(request.POST or None, instance=post)
 
@@ -106,7 +98,6 @@ def update_post(request, slug):
         update_form.save()
         return redirect("all-posts")
 
-    print(post)
     context = {"update_form": update_form}
     
     return render(request, "account/update.html", context)

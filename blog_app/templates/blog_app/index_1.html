@@ -1,54 +1,31 @@
+{% extends "base.html" %}
 {% load static %}
 
-<!DOCTYPE html>
-<html>
-  
-<head>
-    <style>
-        img {
-            height: 200px;
-            width: 200px;
-        }
 
-        .gfg {
-            margin: 3%;
-            position: relative;
-        }
-  
-        .first-txt {
-            position: absolute;
-            top: 17px;
-            left: 50px;
-        }
-  
-        .second-txt {
-            position: absolute;
-            bottom: 20px;
-            left: 10px;
-        }
+{% block title %}
+    lemonpy
+{% endblock %}
 
-        {% comment %} .div-text {
-            background-color: white;
-            position: absolute;
-        } {% endcomment %}
+{% block css_styles %}
+    <link rel="stylesheet" href="{% static "blog_app/css/index_1.css" %}">
+{% endblock %}
 
-    </style>
-</head>
-  
-<body>
-    <div class="gfg">
-        <img src="{% static "blog_app/images/classic-lemon-py.png" %}">
 
-        <div class="first-text">
-            <h3 class="">
-                GeeksforGeeks
-            </h3>
+{% block content %}
+    <div class="container text-center">
+        <h3 class="h3-main">Recent Posts</h3>
+        <div class="row">
+            {% for post in recent_posts %}
+                <div class="col-lg-4 main-col-div">
+                    <a class=""href="{% url "single-post" post.slug %}" >
+                        <img class="img-1" src="{{post.image.url}}">
+                    </a>
+                    <div class="post-content">
+                        <h5 class="h5-title">{{post.title}}</h5>
+                        <p class="p-author">by {{post.author}}</p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
-          
-        <h3 class="second-txt">
-            A computer science portal
-        </h3>
     </div>
-</body>
-  
-</html>
+{% endblock %}
