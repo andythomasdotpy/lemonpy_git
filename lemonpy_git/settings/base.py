@@ -99,12 +99,12 @@ LOGIN_REDIRECT_URL="index"
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static"
-# ]
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "staticfiles"),
+   ]
 
 MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/files/"   #any path of your choice

@@ -7,6 +7,9 @@ from . import views
 
 from .views import CreatePostView
 
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
+
 urlpatterns = [
     path("", views.index, name="index"),
     path("all-posts", views.all_posts, name="all-posts"),
@@ -19,4 +22,5 @@ urlpatterns = [
     path("new-post", CreatePostView.as_view(), name="new_post"),
     path("update-post/<slug:slug>", views.update_post, name="update-post"),
     path("delete-post<slug:slug>", views.delete_post, name="delete-post"),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
 ]
