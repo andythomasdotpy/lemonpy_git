@@ -6,16 +6,41 @@
 {% block title %} {% endblock %}
 
 {% block css_styles %} 
-    <link rel="stylesheet" href="{% static "blog_app/css/single_post.css" %}">
+    <link rel="stylesheet" href="{% static "blog_app/css/my_likes.css" %}">
 {% endblock %}
 
 {% block content %} 
-    <div class="container">
-        <h3>Posts You've Liked</h3>
+    <!-- <div class="container mt-5 main-div">
+        <h3 class="text-center">Posts You've Liked</h3>
+        {% for post in posts_list %}
+            <div class="container row mt-5 liked-post-row">
+                <div class="image-div">
+                    <img class="liked-imgs" src="{{ post.image.url }}" alt="{{post.image}}" />
+                </div>
+                <div class="text-div">
+                    <h5>{{ post.title}}</h5>
+                </div>
+            </div>
+        {% endfor %}
+    </div> -->
+
+    <div class="container mt-5 main-div">
+        <h3 class="text-center">Posts You've Liked</h3>
         {% for post in posts_list %}
 
-            <img class="" src="{{ post.image.url }}" alt="{{post.image}}" />
-
+            <div class="container1 mt-5">
+                <div class="image">
+                    <a href="{% url "single-post" post.slug %}"><img class="liked-imgs" src="{{ post.image.url }}" alt="{{post.image}}"/></a>
+                </div>
+                <div class="text">
+                    <h5 class="post-title">{{ post.title }}</h5>
+                    <p class="post-author"> Author: {{ post.author }} </p>
+                    <p class="liked-date"> Liked on {{ post.date }}</p>
+                </div>
+            </div>
         {% endfor %}
     </div>
+
+    
+
 {% endblock %}

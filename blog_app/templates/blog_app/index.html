@@ -17,7 +17,7 @@
         <div class="row">
             {% for post in recent_posts %}
                 <div class="col-lg-4 main-col-div">
-                    <a class=""href="{% url "single-post" post.slug %}" >
+                    <a class="" href="{% url "single-post" post.slug %}" >
                         <img class="img-1" src="{{post.image.url}}">
                     </a>
                     <div class="post-content">
