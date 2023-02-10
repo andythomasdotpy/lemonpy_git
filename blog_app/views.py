@@ -135,18 +135,15 @@ def my_likes(request):
     loggedin_user = request.user.id
     posts_liked_by_user = Likes.objects.filter(user_id=loggedin_user)
 
-    print(loggedin_user)
-    print(posts_liked_by_user)
-
     posts_list = list()
-
     for like in posts_liked_by_user:
-        # print(like)
-        print(like.id)
-        print(like.post_id)
-        # single_post = Post.objects.get(pk=post.post_id)
-        # print(single_post)
+        try:
+            single_post = Post.objects.get(pk=like.post_id)
+            posts_list.append(single_post)
+        except:
+            pass
     
-    context = {"posts_liked_by_user": posts_liked_by_user}
+    print(posts_list)
+    context = {"posts_list": posts_list}
 
     return render(request, "blog_app/my_likes.html", context)

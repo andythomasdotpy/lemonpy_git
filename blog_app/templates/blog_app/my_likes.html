@@ -12,12 +12,9 @@
 {% block content %} 
     <div class="container">
         <h3>Posts You've Liked</h3>
-        {% for post in my_list %}
-            {{ post }}
-            <!-- {{ post.title }}
-            {{ post.author }}
-            {{ post.title }}
-            <img class="post-image mb-3" src="{{ post.image.url }}" alt="{{post.image}}" /> -->
+        {% for post in posts_list %}
+
+            <img class="" src="{{ post.image.url }}" alt="{{post.image}}" />
 
         {% endfor %}
     </div>
