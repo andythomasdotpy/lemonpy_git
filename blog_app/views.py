@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views.generic.edit import CreateView, View
 
-from .forms import UserRegistrationForm, MakePostForm
-from .models import Post, Likes
+from .forms import UserRegistrationForm, MakePostForm, CreateCommentForm
+from .models import Post, Likes, Comments
 
 
 # Create your views here.
@@ -30,6 +30,13 @@ def post_detail(request, slug):
     qs_does_user_like = Likes.objects.filter(user_id=loggedin_user, post_id=selected_post.id)
     does_user_like_count = qs_does_user_like.count()
 
+    # Run query on comments associated with posts
+    try:
+        comments_for_post = Comments.objects.filter(post_id=selected_post.id)
+    except:
+        comments_for_post = None
+
+
     if request.method == "POST":
         print("POST HERE")
         if does_user_like_count == 0:
@@ -48,7 +55,8 @@ def post_detail(request, slug):
         is_liked = True
     
     selected_post = Post.objects.get(slug=slug)
-    context = {"post": selected_post, "total_likes": total_likes, "is_liked": is_liked}
+    comment_form = CreateCommentForm()
+    context = {"post": selected_post, "total_likes": total_likes, "is_liked": is_liked, "comment_form": comment_form, "comments_for_post": comments_for_post, "comment_author": loggedin_user}
     return render(request, "blog_app/single_post.html", context)
 
 
@@ -109,3 +117,15 @@ def delete_post(request, slug):
     post.delete()
 
     return render(request, "blog_app/deleted_confirmation.html")
+
+
+def add_comment(request, slug):
+    loggedin_user = request.user.id
+    selected_post = Post.objects.get(slug=slug)
+    
+    if request.method == "POST":
+        comment = request.POST['comment']
+        comment_row = Comments(user_id=int(loggedin_user), post_id=int(selected_post.id), comment=comment, comments_username=request.user.username)
+        comment_row.save()
+
+        return redirect("single-post", slug)

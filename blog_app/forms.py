@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from .models import Post
+from .models import Post, Comments
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -30,3 +30,12 @@ class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ("title", "rating", "image", "content")
+
+
+class CreateCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = {"comment"}
+        labels = {
+            "comment": ""
+        }

@@ -76,6 +76,27 @@ h1 {
     text-decoration: none;
 }
 
+.addl-comments {
+    width: 370;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addl-comments-p {
+    width: 370;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#id_comment {
+    width: 223px;
+    border-radius: 6px;
+    border: 0.5px solid grey;
+    background: #f6f6df;
+}
+
 @media (max-width: 525px) {
     .main-div {
         width: 320px;

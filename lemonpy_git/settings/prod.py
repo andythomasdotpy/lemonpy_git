@@ -14,6 +14,9 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
 #     "www.lemonpy.com"
 # ]
 
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "staticfiles"),
+   ]
 
 # HTTPS settings
 SESSION_COOKIE_SECURE = True

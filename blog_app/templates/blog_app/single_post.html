@@ -28,12 +28,33 @@
                         {% if not is_liked %}
                             <button class="like-btn ps-0" name="like" value="like "href="{% url "single-post" post.slug %}">♡</button>
                         {% else %}
-                            <button class="like-btn ps-0" name="like" value="unlike "href="{% url "single-post" post.slug %}">❤️</button>
+                            <button class="like-btn ps-0" name="like" value="unlike "href="{% url "single-post" post.slug %}">🖤</button>
                         {% endif %}
     
                         <button class="btn">Likes: {{ total_likes }}</button>    
                     </div>
                 </form>
+                
+                <div class="container div-content ps-3">
+                    <h6 class="h6-sub-class">{{post.author}}</h6>
+                    <p class="text-content">{{ post.content }}</p>
+                </div>
+                
+                <br>
+                <form class="container like-div ps-5" action="{% url "add-comment" post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <button class="btn btn-dark btn-sm ">Add Comment</button>
+                </form>
+
+                <div class="container like-div ps-5" >
+                    {% for comment in comments_for_post %}
+                        <h6 class="h6-sub-class">{{ comment.comments_username }}</h6>
+                        <p class="text-content">{{ comment.comment }}</p>
+                        <br>
+                    {% endfor %}
+                </div>
+                
             {% else %}
                 <div class="container update-delete-div ps-3">
                     <a class="btn btn-dark" href="{% url "update-post" post.slug %}">Update</a>
@@ -41,6 +62,25 @@
                     <button class="btn btn-outline-dark" disabled>Likes: {{ total_likes }}</button>    
                 </div>
                 <br>
+                <div class="container div-content ps-3">
+                    <h6 class="h6-sub-class">{{post.author}}</h6>
+                    <p class="text-content">{{ post.content }}</p>
+                </div>
+                <br>
+                <form class="container like-div ps-5" action="{% url "add-comment" post.slug %}" method="POST">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <button class="btn btn-dark btn-sm ">Add Comment</button>
+                </form>
+
+                <div class="container like-div ps-5" >
+                    {% for comment in comments_for_post %}
+                        <h6 class="h6-sub-class">{{ comment.comments_username }}</h6>
+                        <p class="text-content">{{ comment.comment }}</p>
+                        <br>
+                    {% endfor %}
+                </div>
+                
             {% endif %}
 
         {% else %}
@@ -50,16 +90,30 @@
                     {% csrf_token %}
                     <button class="like-btn ps-0">♡</button>
                 </a>
-                <button class="btn">Likes: {{ total_likes }}</button>  
+                <button class="btn">Likes: {{ total_likes }}</button>
+
+                <div class="container div-content ps-3">
+                    <h6 class="h6-sub-class">{{post.author}}</h6>
+                    <p class="text-content">{{ post.content }}</p>
+                </div>
+            </div>
+            <br>
+            <form class="container like-div ps-5" action="{% url "login" %}" method="POST">
+                {% csrf_token %}
+                {{ comment_form }}
+                <button class="btn btn-dark btn-sm ">Add Comment</button>
+            </form>
+            <div class="container like-div ps-5" >
+                {% for comment in comments_for_post %}
+                    <h6 class="h6-sub-class">{{ comment.comments_username }}</h6>
+                    <p class="text-content">{{ comment.comment }}</p>
+                    <br>
+                {% endfor %}
             </div>
   
         {% endif %}
 
-            <div class="container div-content ps-3">
-                <h6 class="h6-sub-class">{{post.author}}</h6>
-                <p class="text-content">{{ post.content }}</p>
-            </div>
-    
+
         </div>
 
 {% endblock %}

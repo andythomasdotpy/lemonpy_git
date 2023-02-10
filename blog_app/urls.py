@@ -23,4 +23,5 @@ urlpatterns = [
     path("update-post/<slug:slug>", views.update_post, name="update-post"),
     path("delete-post<slug:slug>", views.delete_post, name="delete-post"),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
+    path("add-comment<slug:slug>", views.add_comment, name="add-comment"),
 ]

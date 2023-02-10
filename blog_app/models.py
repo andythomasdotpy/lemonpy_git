@@ -35,3 +35,13 @@ class Likes(models.Model):
     def __str__(self):
         return f"user_id: {self.user} post_id: {self.post}"
 
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    comments_username = models.CharField(max_length=255, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.comment}"
+
