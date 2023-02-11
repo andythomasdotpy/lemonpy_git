@@ -9,7 +9,7 @@ from .models import Post, Likes, Comments
 
 # Create your views here.
 def index(request):
-    recent_posts = Post.objects.all().order_by("-date")[:3]
+    recent_posts = Post.objects.all().order_by("-date")
     content = {"recent_posts": recent_posts}
 
     return render(request, "blog_app/index.html", content)
