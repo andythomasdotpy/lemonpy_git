@@ -3,22 +3,6 @@ body {
     font-family: Raleway;
 }
 
-/* .liked-post-row {
-    display: flex;
-    align-items: center;
-    justify-content: center
-}
-
-
-
-.image-div {
-    flex-basis: 40%
-}
-
-.text-div {
-    display: inline-block;
-} */
-
 .main-div {
     width: 600px;
 }
@@ -63,4 +47,15 @@ body {
     font-size: 12px;
     font-style: italic;
     margin-bottom: 8px
+  }
+
+  .title {
+    font-size:35px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 300;
+  }
+
+  .main-div222 {
+    margin-top: 15%;
   }

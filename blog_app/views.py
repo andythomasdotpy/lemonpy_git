@@ -8,7 +8,6 @@ from .models import Post, Likes, Comments
 
 
 # Create your views here.
-
 def index(request):
     recent_posts = Post.objects.all().order_by("-date")[:3]
     content = {"recent_posts": recent_posts}
@@ -57,6 +56,7 @@ def post_detail(request, slug):
     selected_post = Post.objects.get(slug=slug)
     comment_form = CreateCommentForm()
     context = {"post": selected_post, "total_likes": total_likes, "is_liked": is_liked, "comment_form": comment_form, "comments_for_post": comments_for_post, "comment_author": loggedin_user}
+    
     return render(request, "blog_app/single_post.html", context)
 
 
@@ -143,7 +143,10 @@ def my_likes(request):
         except:
             pass
     
-    print(posts_list)
     context = {"posts_list": posts_list}
 
     return render(request, "blog_app/my_likes.html", context)
+
+
+def title(request):
+    return render(request, "blog_app/title.html")
