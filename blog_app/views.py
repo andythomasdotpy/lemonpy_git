@@ -132,18 +132,34 @@ def add_comment(request, slug):
 
     
 def my_likes(request):
+    # Obtain logged in user_id
     loggedin_user = request.user.id
+
+    # Query for all likes associated with user_id
     posts_liked_by_user = Likes.objects.filter(user_id=loggedin_user)
 
+    # Create blank list to add posts liked by user
     posts_list = list()
+
+    # Iterate through likes, search if like is associated with logged in user, create list of dicts adding liked date from likes table to user info
     for like in posts_liked_by_user:
+        tmp_dict = dict()
         try:
             single_post = Post.objects.get(pk=like.post_id)
-            posts_list.append(single_post)
+
+            tmp_dict["id"] = single_post.id
+            tmp_dict["title"] = single_post.title
+            tmp_dict["author"] = single_post.author
+            tmp_dict["slug"] = single_post.slug
+            tmp_dict["image"] = single_post.image
+            tmp_dict["date_time_like"] = like.date
+            posts_list.append(tmp_dict)
         except:
             pass
     
-    context = {"posts_list": posts_list}
+    sorted_list_by_liked_date = sorted(posts_list, reverse=True, key=lambda d: d['date_time_like']) 
+
+    context = {"posts_list": sorted_list_by_liked_date}
 
     return render(request, "blog_app/my_likes.html", context)
 

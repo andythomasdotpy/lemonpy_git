@@ -21,7 +21,7 @@ class Post(models.Model):
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
-    date = models.DateField(auto_now=True)
+    date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"user_id: {self.user} post_id: {self.post}"
