@@ -25,5 +25,6 @@ urlpatterns = [
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
     path("add-comment<slug:slug>", views.add_comment, name="add-comment"),
     path("my-likes", views.my_likes, name="my-likes"),
+    path("my-comments", views.my_comments, name="my-comments"),
     path("title", views.title, name="title"),
 ]

@@ -164,5 +164,49 @@ def my_likes(request):
     return render(request, "blog_app/my_likes.html", context)
 
 
+def my_comments(request):
+    # Obtain logged in user_id
+    loggedin_user = request.user.id
+    print(f"logged_in_user: {loggedin_user}")
+
+    # Query for all comments associated with user_id
+    posts_commented_by_user = Comments.objects.filter(user_id=loggedin_user)
+    print(f"posts_commented_by_user: {posts_commented_by_user}")
+
+    # Create blank list to add posts commented on by user
+    posts_list = list()
+
+    # Iterate through likes, search if like is associated with logged in user, create list of dicts adding liked date from likes table to user info
+    for comment in posts_commented_by_user:
+        print(f"comment: {comment}")
+        tmp_dict = dict()
+        try:
+            single_post = Post.objects.get(pk=comment.post_id)
+            print(f"single_post: {single_post}")
+
+            tmp_dict["id"] = single_post.id
+            print(f"tmp_dict: {tmp_dict}")
+            tmp_dict["title"] = single_post.title
+            print(f"tmp_dict: {tmp_dict}")            
+            tmp_dict["author"] = single_post.author
+            print(f"tmp_dict: {tmp_dict}")            
+            tmp_dict["slug"] = single_post.slug
+            print(f"tmp_dict: {tmp_dict}")            
+            tmp_dict["image"] = single_post.image
+            print(f"tmp_dict: {tmp_dict}")            
+            tmp_dict["date_time_comment"] = comment.comment_datetime
+            print(f"tmp_dict: {tmp_dict}")
+            posts_list.append(tmp_dict)
+        except:
+            pass
+    
+    sorted_list_by_comment_date = sorted(posts_list, reverse=True, key=lambda d: d['date_time_comment']) 
+
+    context = {"posts_list": sorted_list_by_comment_date}
+
+    return render(request, "blog_app/my_comments.html", context)
+
+
+
 def title(request):
     return render(request, "blog_app/title.html")

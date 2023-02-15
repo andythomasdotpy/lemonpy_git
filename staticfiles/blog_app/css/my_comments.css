@@ -1,0 +1,61 @@
+body {
+    background-color: #FFFFD2;
+    font-family: Raleway;
+}
+
+.main-div {
+    width: 600px;
+}
+
+.liked-imgs {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.container1 {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+
+  img {
+    max-width: 100%
+  }
+
+  .image {
+    flex-basis: 40%
+  }
+
+  .text {
+    font-size: 20px;
+    padding-left: 20px;
+  }
+
+  .post-title {
+    font-size: 26px;
+    margin-bottom: 8px
+  }
+  
+  .post-author {
+    font-size: 16px;
+    margin-bottom: 8px
+  }
+
+  .liked-date {
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 8px
+  }
+
+  .title {
+    font-size:35px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 300;
+  }
+
+  .main-div222 {
+    margin-top: 15%;
+  }
