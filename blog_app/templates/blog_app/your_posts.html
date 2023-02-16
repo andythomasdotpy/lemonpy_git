@@ -14,11 +14,12 @@
 {% block content %}
     <div class="container text-center">
         {% if request.user.is_authenticated %}
-            <h3 class="h3-main">Posts Made by Others</h3>
+            <h3 class="h3-main">Posts You've Made</h3>    
         {% else %}
             <h3 class="h3-main">All Posts</h3>
+            <p>You can login to view your feed</p>    
         {% endif %}
-
+        
         <div class="row">
             {% for post in recent_posts %}
                 <div class="col-lg-4 main-col-div">

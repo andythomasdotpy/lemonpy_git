@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.views.generic.edit import CreateView, View
 
@@ -9,17 +10,33 @@ from .models import Post, Likes, Comments
 
 # Create your views here.
 def index(request):
-    recent_posts = Post.objects.all().order_by("-date")
-    content = {"recent_posts": recent_posts}
-
-    return render(request, "blog_app/index.html", content)
+    return redirect("all-posts")
 
 
 def all_posts(request):
-    recent_posts = Post.objects.all().order_by("-date")
+    loggedin_user = request.user.id
+    if request.user.is_authenticated:
+        recent_posts = Post.objects.filter(~Q(author_id=loggedin_user)).order_by("-date")
+    else:
+        recent_posts = Post.objects.all().order_by("-date")
+
     content = {"recent_posts": recent_posts}
 
     return render(request, "blog_app/all_posts.html", content)
+
+
+def your_posts(request):
+    loggedin_user = request.user.id
+    if request.user.is_authenticated:
+        recent_posts = Post.objects.filter(Q(author_id=loggedin_user)).order_by("-date")
+    else:
+        recent_posts = Post.objects.all().order_by("-date")  
+        
+    content = {"recent_posts": recent_posts}
+
+
+    return render(request, "blog_app/your_posts.html", content)
+
 
 
 def post_detail(request, slug):
@@ -167,35 +184,25 @@ def my_likes(request):
 def my_comments(request):
     # Obtain logged in user_id
     loggedin_user = request.user.id
-    print(f"logged_in_user: {loggedin_user}")
 
     # Query for all comments associated with user_id
     posts_commented_by_user = Comments.objects.filter(user_id=loggedin_user)
-    print(f"posts_commented_by_user: {posts_commented_by_user}")
 
     # Create blank list to add posts commented on by user
     posts_list = list()
 
     # Iterate through likes, search if like is associated with logged in user, create list of dicts adding liked date from likes table to user info
     for comment in posts_commented_by_user:
-        print(f"comment: {comment}")
         tmp_dict = dict()
         try:
             single_post = Post.objects.get(pk=comment.post_id)
-            print(f"single_post: {single_post}")
 
             tmp_dict["id"] = single_post.id
-            print(f"tmp_dict: {tmp_dict}")
             tmp_dict["title"] = single_post.title
-            print(f"tmp_dict: {tmp_dict}")            
             tmp_dict["author"] = single_post.author
-            print(f"tmp_dict: {tmp_dict}")            
             tmp_dict["slug"] = single_post.slug
-            print(f"tmp_dict: {tmp_dict}")            
             tmp_dict["image"] = single_post.image
-            print(f"tmp_dict: {tmp_dict}")            
             tmp_dict["date_time_comment"] = comment.comment_datetime
-            print(f"tmp_dict: {tmp_dict}")
             posts_list.append(tmp_dict)
         except:
             pass
@@ -205,7 +212,6 @@ def my_comments(request):
     context = {"posts_list": sorted_list_by_comment_date}
 
     return render(request, "blog_app/my_comments.html", context)
-
 
 
 def title(request):

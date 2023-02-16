@@ -11,8 +11,8 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("all-posts", views.all_posts, name="all-posts"),
+    path("index", views.index, name="index"),
+    path("", views.all_posts, name="all-posts"),
     path("single_post/<slug:slug>", views.post_detail, name="single-post"),
     path("register", views.register, name="register"),
     path("login", LoginView.as_view(), name="login"),
@@ -27,4 +27,5 @@ urlpatterns = [
     path("my-likes", views.my_likes, name="my-likes"),
     path("my-comments", views.my_comments, name="my-comments"),
     path("title", views.title, name="title"),
+    path("your-posts", views.your_posts, name="your-posts"),
 ]

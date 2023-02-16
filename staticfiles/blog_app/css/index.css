@@ -8,6 +8,12 @@ body {
     font-weight: 600;
 }
 
+.h3-main-logged-out {
+    margin: 100px 0 30px 0;
+    font-family: "Roboto Slab";
+    font-weight: 600;
+}
+
 .img-1 {
     width: 350px;
     height: 350px;
