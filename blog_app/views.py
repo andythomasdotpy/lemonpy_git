@@ -119,9 +119,11 @@ def update_post(request, slug):
     
     update_form = MakePostForm(request.POST or None, instance=post)
 
+    context = {"update_form": update_form}
+
     if update_form.is_valid():
         update_form.save()
-        return redirect("all-posts")
+        return redirect("index")
 
     context = {"update_form": update_form}
     

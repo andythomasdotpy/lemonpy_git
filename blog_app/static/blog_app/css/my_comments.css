@@ -5,6 +5,7 @@ body {
 
 .main-div {
     width: 600px;
+    max-width: 100%;
 }
 
 .liked-imgs {
@@ -63,4 +64,34 @@ img {
 .comment-p {
     max-width: 282.3;
     font-size: 13px;
+}
+
+@media (max-width: 583px) {
+    .liked-imgs {
+        width: 100px;
+        height: 100px;
+    }
+    .post-title {
+        font-size: 18px;
+        margin-bottom: 4px;
+        padding-top: 2px;
+    }
+    .post-author {
+        font-size: 11px;
+        margin-bottom: 4px
+    }
+    .liked-date {
+        font-size: 10px;
+        font-style: italic;
+        margin-bottom: 5px
+    }
+    .comment-p {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    .text {
+        font-size: 20px;
+        padding-left: 5px;
+        max-width: 195.4px;
+    }
 }
