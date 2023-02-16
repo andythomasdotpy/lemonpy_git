@@ -203,6 +203,7 @@ def my_comments(request):
             tmp_dict["slug"] = single_post.slug
             tmp_dict["image"] = single_post.image
             tmp_dict["date_time_comment"] = comment.comment_datetime
+            tmp_dict["comment_content"] = comment.comment
             posts_list.append(tmp_dict)
         except:
             pass

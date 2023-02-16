@@ -18,44 +18,49 @@ body {
     display: flex;
     align-items: center;
     justify-content: left;
-  }
+}
 
-  img {
+img {
     max-width: 100%
-  }
+}
 
-  .image {
+.image {
     flex-basis: 40%
-  }
+}
 
-  .text {
+.text {
     font-size: 20px;
     padding-left: 20px;
-  }
+}
 
-  .post-title {
+.post-title {
     font-size: 26px;
     margin-bottom: 8px
-  }
+}
   
-  .post-author {
+.post-author {
     font-size: 16px;
     margin-bottom: 8px
-  }
+}
 
-  .liked-date {
+.liked-date {
     font-size: 12px;
     font-style: italic;
-    margin-bottom: 8px
-  }
+    margin-bottom: 10px
+}
 
-  .title {
+.title {
     font-size:35px;
     margin-top: auto;
     margin-bottom: auto;
     font-weight: 300;
-  }
+}
 
-  .main-div222 {
+.main-div222 {
     margin-top: 15%;
-  }
+}
+
+.comment-p {
+    max-width: 282.3;
+    font-size: 13px;
+}

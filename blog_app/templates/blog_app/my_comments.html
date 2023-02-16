@@ -19,9 +19,10 @@
                     <a href="{% url "single-post" post.slug %}"><img class="liked-imgs" src="{{ post.image.url }}" alt="{{post.image}}"/></a>
                 </div>
                 <div class="text">
-                    <h5 class="post-title">{{ post.title }}</h5>
-                    <p class="post-author"> Author: {{ post.author }} </p>
+                    <h6 class="post-title">{{ post.title }}</h6>
+                    <p class="post-author"> Post Author: {{ post.author }} </p>
                     <p class="liked-date"> You commented on {{ post.date_time_comment }}</p>
+                    <p class="comment-p">"{{ post.comment_content }}"</p>
                 </div>
             </div>
         {% endfor %}
