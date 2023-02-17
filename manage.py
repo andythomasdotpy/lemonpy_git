@@ -24,5 +24,6 @@ if __name__ == "__main__":
 
 
 
-#TODO: add like system
 #TODO: serve static uploaded images from s3 bucket
+#TODO: redirect user to home page after registering
+#TODO: add loading widget

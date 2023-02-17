@@ -1,10 +1,15 @@
 body {
     background-color: #FFFFD2;
+    font-family: Raleway;
 }
 
 h1 {
     font-family: "Roboto Slab";
     font-weight: 600;
+}
+
+.main-div {
+    margin-top: 5%;
 }
 
 .post-image {
@@ -30,4 +35,58 @@ h1 {
     padding-left: 0;
     max-width: 400px;
     text-align: left;
+}
+
+.like-div {
+    padding-left: 0;
+    max-width: 400px;
+    text-align: left;
+}
+
+.like-btn {
+    width: 50px;
+    background-color: #FFFFD2;
+    border: none;
+}
+
+.div-delete {
+    margin-top: 15%;
+}
+
+.div-content {
+    max-width: 400px;
+    text-align: left;
+}
+
+.text-content {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.h6-sub-class, .text-content {
+    display: inline;
+}
+
+.logged-out-user-div {
+    max-width: 400px;
+    align-items: left;
+}
+
+.a-tag-logged-out {
+    text-decoration: none;
+}
+
+@media (max-width: 525px) {
+    .main-div {
+        width: 320px;
+    }
+
+    .post-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .text-content {
+        font-size: 11;
+    }
 }

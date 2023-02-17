@@ -2,9 +2,9 @@ body {
     background-color: #FFFFD2;
 }
 
-.register {
+.login {
     width: 350px;
-    margin-top: 6%;
+    margin-top: 10%;
 }
 
 .form-sytle {
@@ -15,15 +15,7 @@ body {
     background-color: #f6f6df;
 }
 
-#id_email {
-    background-color: #f6f6df;
-}
-
-#id_password_1 {
-    background-color: #f6f6df;
-}
-
-#id_password_2 {
+#id_password {
     background-color: #f6f6df;
 }
 
@@ -32,7 +24,7 @@ body {
     box-shadow: 0 0 0 0.25rem black;
 }
 
-.h1-register {
+.h1-login {
     font-family: "Roboto Slab";
     font-weight: 600;
 }

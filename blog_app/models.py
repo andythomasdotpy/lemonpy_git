@@ -4,17 +4,8 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Author(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
-
-
 class Post(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField(max_length=25)
     rating = models.FloatField(max_length=20, null=True, validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
     # image_name = models.TextField(max_length=300)
     image = models.ImageField(upload_to="posts")
@@ -29,9 +20,20 @@ class Post(models.Model):
 
 class Likes(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
-    date = models.DateField(auto_now=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user}"
+        return f"user_id: {self.user} post_id: {self.post}"
+
+
+class Comments(models.Model):
+    comment = models.CharField(max_length=255)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
+    comments_username = models.CharField(max_length=255, null=True, blank=True)
+    comment_datetime = models.DateTimeField(auto_now=True, null=True)
+
+    def __str__(self):
+        return f"{self.comment}"
 

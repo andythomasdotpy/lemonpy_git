@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Author, Post
+from .models import Post, Likes, Comments
 
 
 # Register your models here.
@@ -10,5 +10,6 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
 
 
-admin.site.register(Author)
 admin.site.register(Post, PostAdmin)
+admin.site.register(Likes)
+admin.site.register(Comments)

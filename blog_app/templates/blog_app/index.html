@@ -7,34 +7,30 @@
 {% endblock %}
 
 {% block css_styles %}
-    <link rel="stylesheet" href="{% static "blog_app/index.css" %}">
+    <link rel="stylesheet" href="{% static "blog_app/css/index.css" %}">
 {% endblock %}
 
 
 {% block content %}
-    <div class="container mt-5 text-center">
-        <h1>A Blog Dedicated to Lemon Py</h1>
-    <div>
-
-    <div class="container full-outer-div">
-        <div class="row mt-5 mb-5 div-all-articles">
-            <h2 class="mt-5 mb-5">Recent Posts</h2>
+    <div class="container text-center">
+        {% if request.user.is_authenticated %}
+            <h3 class="h3-main">Your Feed</h3>    
+        {% else %}
+            <h3 class="h3-main">All Posts</h3>    
+        {% endif %}
+        
+        <div class="row">
             {% for post in recent_posts %}
-                <div class="col-lg-4 pt-3">
-                    <a class="class-a-post"href="{% url "single-post" post.slug %}" >
-                        <div class="container full-post-div">
-                        <img class="post-image" src="{{ post.image.url }}" alt="Classic Lemon Py" />
-                        <div class="post-content> text-center">
-                            <h6 class="pt-2">{{post.title}}</h6>
-                            <p class="p-author">by {{post.author}}</p>
-                        </div>
-                        </div>
+                <div class="col-lg-4 main-col-div">
+                    <a class="" href="{% url "single-post" post.slug %}" >
+                        <img class="img-1" src="{{post.image.url}}">
                     </a>
+                    <div class="post-content">
+                        <h5 class="h5-title">{{post.title}}</h5>
+                        <p class="p-author">by {{post.author}}</p>
+                    </div>
                 </div>
             {% endfor %}
-
-
         </div>
     </div>
-
 {% endblock %}

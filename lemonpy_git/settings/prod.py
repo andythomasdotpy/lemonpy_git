@@ -1,4 +1,4 @@
-from decouple import config
+from decouple import config, Csv
 
 from .base import *
 
@@ -6,12 +6,17 @@ print("prod")
 
 SECRET_KEY = config("SECRET_KEY")
 
-DEBUG = False
+DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = [
-    "lemonpy.com",
-    "www.lemonpy.com"
-    ]
+ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv())
+# ALLOWED_HOSTS = [
+#     "lemonpy.com",
+#     "www.lemonpy.com"
+# ]
+
+STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, "staticfiles"),
+   ]
 
 # HTTPS settings
 SESSION_COOKIE_SECURE = True

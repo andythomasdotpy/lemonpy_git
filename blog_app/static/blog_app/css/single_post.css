@@ -1,0 +1,113 @@
+body {
+    background-color: #FFFFD2;
+    font-family: Raleway;
+}
+
+h1 {
+    font-family: "Roboto Slab";
+    font-weight: 600;
+}
+
+.main-div {
+    margin-top: 5%;
+}
+
+.post-image {
+    border-radius: 7px;
+    width: 400px;
+    height: 400px;
+}
+
+.h2-div {
+    max-width: 400px;
+    text-align: left;
+    padding-left: 0;
+}
+
+.h6-div {
+    max-width: 400px;
+    text-align: left;
+    padding-left: 0;
+    color: #6f6f6c;
+}
+
+.update-delete-div {
+    padding-left: 0;
+    max-width: 400px;
+    text-align: left;
+}
+
+.like-div {
+    padding-left: 0;
+    max-width: 400px;
+    text-align: left;
+}
+
+.like-btn {
+    width: 50px;
+    background-color: #FFFFD2;
+    border: none;
+}
+
+.div-delete {
+    margin-top: 15%;
+}
+
+.div-content {
+    max-width: 400px;
+    text-align: left;
+}
+
+.text-content {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.h6-sub-class, .text-content {
+    display: inline;
+}
+
+.logged-out-user-div {
+    max-width: 400px;
+    align-items: left;
+}
+
+.a-tag-logged-out {
+    text-decoration: none;
+}
+
+.addl-comments {
+    width: 370;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addl-comments-p {
+    width: 370;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#id_comment {
+    width: 223px;
+    border-radius: 6px;
+    border: 0.5px solid grey;
+    background: #f6f6df;
+}
+
+@media (max-width: 525px) {
+    .main-div {
+        width: 320px;
+    }
+
+    .post-image {
+        width: 300px;
+        height: 300px;
+    }
+
+    .text-content {
+        font-size: 11;
+    }
+}
