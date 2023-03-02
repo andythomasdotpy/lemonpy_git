@@ -16,6 +16,7 @@ h1 {
     border-radius: 7px;
     width: 400px;
     height: 400px;
+    object-fit: cover;
 }
 
 .h2-div {
